@@ -11,7 +11,7 @@ Paso siguiente generar pillar srv/pillar/name.sls
 ==== name.sls ====
 sqlserver:
   db_name:
-    server: ip servidor
+    host: ip host (111.111.111.1:port)
     uid: user name
     passw: password user
 === Fin name.sls ===
@@ -20,18 +20,18 @@ Para agregar mas bases de datos ejemplo:
 ==== name.sls ====
 sqlserver:
   db_1:
-    server: ip servidor
+    host: ip servidor
     uid: user name
     passw: password user
   db_2:
-    server: ip servidor
+    host: ip servidor
     uid: user name
     passw: password user
     .
     .
     .
     db_n:
-    server: ip servidor
+    host: ip servidor
     uid: user name
     passw: password user
 === Fin name.sls ===
