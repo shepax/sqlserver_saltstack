@@ -18,24 +18,24 @@ def __virtual__():
 	'''
 	return __virtualname__ if HAS_PYMSSQL else False
 	
-def _connect(server,uid,passw)
+def _connect(host,uid,passw)
 	'''
 	=== windowsdb.sls ===
 	sqlserver:
 		db_name:
-			server: set de ip to connect to the server (192.168.0.0:port) 
+			host: set de ip to connect to the server (192.168.0.0:port) 
 			uid: user for the database
 			passw: password from the user
 	=== end of pillar ===
 	
-	Returne pymssql.connect instance (server, user_db, password_db)
+	Returne pymssql.connect instance (host, user_db, password_db)
 	'''
-	return conn = pymssql.connect(server,uid,passw)
+	return conn = pymssql.connect(host,uid,passw)
 
 def run_query(db, query):
 	'''
 	Get the pillar variables for the connection
-	server
+	host
 	uid
 	passw
 	=======================================================
@@ -45,14 +45,14 @@ def run_query(db, query):
 
         salt '*' sqlserver.run_query db_name "select * from my_table"
     '''
-	server = __salt__['pillar.get']('sqlserver:'+ db + ':server')
+	host = __salt__['pillar.get']('sqlserver:'+ db + ':host')
 	uid =  __salt__['pillar.get']('sqlserver:'+ db + ':uid')
 	passw = __salt__['pillar.get']('sqlserver:'+ db + ':passw')
 	
 	'''
 	Making the connection to the server
 	'''
-	conn= _connect(server,uid,passw)
+	conn= _connect(host,uid,passw)
 		
 	#executing the query 
 	return conn.cursor().execute(query).fetchall()
