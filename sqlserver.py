@@ -26,11 +26,12 @@ def _connect(host,uid,passw)
 			host: set de ip to connect to the server (192.168.0.0:port) 
 			uid: user for the database
 			passw: password from the user
+			db: database name
 	=== end of pillar ===
 	
-	Returne pymssql.connect instance (host, user_db, password_db)
+	Returne pymssql.connect instance (host, user_db, password_db, database)
 	'''
-	return conn = pymssql.connect(host,uid,passw)
+	return conn = pymssql.connect(host,uid,passw,db)
 
 def run_query(db, query):
 	'''
@@ -52,7 +53,7 @@ def run_query(db, query):
 	'''
 	Making the connection to the server
 	'''
-	conn= _connect(host,uid,passw)
+	conn= _connect(host,uid,passw,db)
 		
 	#executing the query 
 	return conn.cursor().execute(query).fetchall()
