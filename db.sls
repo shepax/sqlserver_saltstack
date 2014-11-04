@@ -1,6 +1,6 @@
 sqlserver:
 		db_name:
-			host: set de ip to connect to the server (192.168.0.0:port) 
-			uid: user for the database
-			passw: password from the user
-			db: database name
+			host: 192.168.99.11:1433 
+			uid: Administrator
+			passw: labsaltstack.2014
+			db: dpa
