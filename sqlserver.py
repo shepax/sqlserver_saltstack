@@ -2,7 +2,7 @@ import os
 import logging
 from salt.utils.decorators import depends
 
-log = loggin.getLogger(__name__)
+log = logging.getLogger(__name__)
 
 try:
 	import pymssql
@@ -14,7 +14,7 @@ __virtualname__= 'SqlServer'
 
 def __virtual__():
 	'''
-	Load module only if pyodbc installed
+	Load module only if pymssql installed
 	'''
 	return __virtualname__ if HAS_PYMSSQL else False
 	
