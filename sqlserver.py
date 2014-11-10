@@ -18,7 +18,7 @@ def __virtual__():
 	'''
 	return __virtualname__ if HAS_PYMSSQL else False
 	
-def _connect(host,uid,passw)
+def _connect(host,uid,passw,db):
 	'''
 	=== windowsdb.sls ===
 	sqlserver:
@@ -31,7 +31,7 @@ def _connect(host,uid,passw)
 	
 	Returne pymssql.connect instance (host, user_db, password_db, database)
 	'''
-	return conn = pymssql.connect(host,uid,passw,db)
+	return pymssql.connect(host,uid,passw,db)
 
 def run_query(db, query):
 	'''
@@ -53,7 +53,7 @@ def run_query(db, query):
 	'''
 	Making the connection to the server
 	'''
-	conn= _connect(host,uid,passw,db)
+	conn = _connect(host,uid,passw,db)
 		
 	#executing the query 
 	return conn.cursor().execute(query).fetchall()
