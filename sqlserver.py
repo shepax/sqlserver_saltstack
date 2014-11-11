@@ -10,7 +10,7 @@ try:
 except ImportError:
 	HAS_PYMSSQL= False
 
-__virtualname__= 'SqlServer'
+__virtualname__= 'sqlServer'
 
 def __virtual__():
 	'''
